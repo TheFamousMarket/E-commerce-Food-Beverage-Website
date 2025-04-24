@@ -1,26 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 const Auth = () => {
   const {
     signInWithGoogle,
-    signInWithFacebook
+    signInWithFacebook,
+    error
   } = useAuth();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const handleGoogleSignIn = async () => {
     try {
+      setLoading(true);
       await signInWithGoogle();
       navigate('/');
     } catch (error) {
       console.error('Google sign in error:', error);
+    } finally {
+      setLoading(false);
     }
   };
   const handleFacebookSignIn = async () => {
     try {
+      setLoading(true);
       await signInWithFacebook();
       navigate('/');
     } catch (error) {
       console.error('Facebook sign in error:', error);
+    } finally {
+      setLoading(false);
     }
   };
   return <div className="w-full bg-white">
@@ -53,18 +61,25 @@ const Auth = () => {
               Sign in to access your account and explore our delicious offerings
             </p>
           </div>
+          {error && <div className="mb-4 p-4 bg-red-50 border border-red-200 text-red-600 rounded-md">
+              {error}
+            </div>}
           <div className="space-y-4">
-            <button onClick={handleGoogleSignIn} className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 rounded-md shadow-sm bg-white text-gray-700 hover:bg-gray-50 transition-colors">
-              <svg className="w-5 h-5" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z" />
-              </svg>
-              Continue with Google
+            <button onClick={handleGoogleSignIn} disabled={loading} className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 rounded-md shadow-sm bg-white text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+              {loading ? <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-gray-700"></div> : <>
+                  <svg className="w-5 h-5" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z" />
+                  </svg>
+                  Continue with Google
+                </>}
             </button>
-            <button onClick={handleFacebookSignIn} className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 rounded-md shadow-sm bg-blue-600 text-white hover:bg-blue-700 transition-colors">
-              <svg className="w-5 h-5" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-              </svg>
-              Continue with Facebook
+            <button onClick={handleFacebookSignIn} disabled={loading} className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 rounded-md shadow-sm bg-blue-600 text-white hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+              {loading ? <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div> : <>
+                  <svg className="w-5 h-5" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+                  </svg>
+                  Continue with Facebook
+                </>}
             </button>
           </div>
           <p className="mt-8 text-center text-sm text-gray-500">
