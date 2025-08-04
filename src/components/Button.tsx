@@ -13,11 +13,11 @@ const Button: React.FC<ButtonProps> = ({
   className,
   ...props
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center rounded-md font-medium focus:outline-none';
+  const baseStyles = 'inline-flex items-center justify-center rounded-md font-medium focus:outline-none transition-all duration-200';
   const variantStyles = {
-    primary: 'bg-red-600 text-white hover:bg-red-700 focus:ring-2 focus:ring-offset-2 focus:ring-red-500',
-    secondary: 'bg-pink-100 text-red-600 hover:bg-pink-200 focus:ring-2 focus:ring-offset-2 focus:ring-pink-500',
-    outline: 'border border-red-600 text-red-600 bg-transparent hover:bg-red-50 focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
+    primary: 'bg-indigo-600 text-white hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500',
+    secondary: 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200 focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500',
+    outline: 'border border-indigo-600 text-indigo-600 bg-transparent hover:bg-indigo-50 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
   };
   const sizeStyles = {
     sm: 'text-sm px-3 py-1.5',

@@ -17,7 +17,7 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  return <nav className="bg-white shadow-sm sticky top-0 z-50">
+  return <nav className="bg-white shadow-sm sticky top-0 z-50 backdrop-blur-md bg-white/90">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
@@ -26,29 +26,29 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-gray-900 hover:text-red-600 px-3 py-2 font-medium">
+            <Link to="/" className="text-gray-800 hover:text-indigo-600 px-3 py-2 font-medium transition-colors">
               Home
             </Link>
-            <Link to="/about" className="text-gray-900 hover:text-red-600 px-3 py-2 font-medium">
+            <Link to="/about" className="text-gray-800 hover:text-indigo-600 px-3 py-2 font-medium transition-colors">
               About
             </Link>
-            <Link to="/menu" className="text-gray-900 hover:text-red-600 px-3 py-2 font-medium">
+            <Link to="/menu" className="text-gray-800 hover:text-indigo-600 px-3 py-2 font-medium transition-colors">
               Menu
             </Link>
-            <Link to="/partners" className="text-gray-900 hover:text-red-600 px-3 py-2 font-medium">
+            <Link to="/partners" className="text-gray-800 hover:text-indigo-600 px-3 py-2 font-medium transition-colors">
               Partners
             </Link>
-            <Link to="/contact" className="text-gray-900 hover:text-red-600 px-3 py-2 font-medium">
+            <Link to="/contact" className="text-gray-800 hover:text-indigo-600 px-3 py-2 font-medium transition-colors">
               Contact
             </Link>
-            <Link to="/menu" className="text-gray-900 hover:text-red-600 px-3 py-2 font-medium relative">
+            <Link to="/menu" className="text-gray-800 hover:text-indigo-600 px-3 py-2 font-medium relative">
               <ShoppingCart className="w-6 h-6" />
-              {totalItems > 0 && <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+              {totalItems > 0 && <span className="absolute -top-1 -right-1 bg-indigo-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
                   {totalItems}
                 </span>}
             </Link>
             {user ? <div className="relative group">
-                <button className="flex items-center space-x-2 text-gray-900 hover:text-red-600">
+                <button className="flex items-center space-x-2 text-gray-800 hover:text-indigo-600">
                   {user.photoURL ? <img src={user.photoURL} alt={user.displayName || 'User'} className="w-8 h-8 rounded-full" /> : <UserIcon className="w-6 h-6" />}
                 </button>
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden group-hover:block">
@@ -59,18 +59,18 @@ const Navbar = () => {
                     Sign Out
                   </button>
                 </div>
-              </div> : <Link to="/auth" className="text-gray-900 hover:text-red-600 px-3 py-2 font-medium">
+              </div> : <Link to="/auth" className="text-gray-800 hover:text-indigo-600 px-3 py-2 font-medium">
                 Sign In
               </Link>}
           </div>
           <div className="flex md:hidden items-center">
-            <Link to="/menu" className="text-gray-900 mr-4 relative">
+            <Link to="/menu" className="text-gray-800 mr-4 relative">
               <ShoppingCart className="w-6 h-6" />
-              {totalItems > 0 && <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+              {totalItems > 0 && <span className="absolute -top-1 -right-1 bg-indigo-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
                   {totalItems}
                 </span>}
             </Link>
-            <button onClick={toggleMenu} className="inline-flex items-center justify-center p-2 rounded-md text-gray-900 hover:text-red-600 focus:outline-none">
+            <button onClick={toggleMenu} className="inline-flex items-center justify-center p-2 rounded-md text-gray-800 hover:text-indigo-600 focus:outline-none">
               {isMenuOpen ? <CloseIcon className="block h-6 w-6" aria-hidden="true" /> : <MenuIcon className="block h-6 w-6" aria-hidden="true" />}
             </button>
           </div>
@@ -78,19 +78,19 @@ const Navbar = () => {
       </div>
       {isMenuOpen && <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white">
-            <Link to="/" className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-red-600" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/" className="block px-3 py-2 text-base font-medium text-gray-800 hover:text-indigo-600" onClick={() => setIsMenuOpen(false)}>
               Home
             </Link>
-            <Link to="/about" className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-red-600" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/about" className="block px-3 py-2 text-base font-medium text-gray-800 hover:text-indigo-600" onClick={() => setIsMenuOpen(false)}>
               About
             </Link>
-            <Link to="/menu" className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-red-600" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/menu" className="block px-3 py-2 text-base font-medium text-gray-800 hover:text-indigo-600" onClick={() => setIsMenuOpen(false)}>
               Menu
             </Link>
-            <Link to="/partners" className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-red-600" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/partners" className="block px-3 py-2 text-base font-medium text-gray-800 hover:text-indigo-600" onClick={() => setIsMenuOpen(false)}>
               Partners
             </Link>
-            <Link to="/contact" className="block px-3 py-2 text-base font-medium text-gray-900 hover:text-red-600" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/contact" className="block px-3 py-2 text-base font-medium text-gray-800 hover:text-indigo-600" onClick={() => setIsMenuOpen(false)}>
               Contact
             </Link>
           </div>

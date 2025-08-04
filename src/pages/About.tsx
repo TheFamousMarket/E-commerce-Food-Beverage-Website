@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
+import BrandStorySection from '../components/BrandStorySection';
 import { Building2, Users2, GraduationCap, HeartHandshake } from 'lucide-react';
 const About = () => {
   return <div className="w-full bg-white">
@@ -35,12 +36,15 @@ const About = () => {
             both the overarching THEFMSMKT name and the physical CMNTYPLX space
             where our products come to life.
           </p>
-          <div className="my-10">
-            <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="THEFMSMKT Community Space" className="w-full h-80 object-cover rounded-lg shadow-md mb-4" />
-            <p className="text-sm text-gray-500 italic text-center">
-              Our CMNTYPLX space - where community and quality food come
-              together
-            </p>
+          {/* Video showcase instead of static image */}
+          <div className="my-10 relative rounded-lg overflow-hidden shadow-md">
+            <video className="w-full h-80 object-cover" autoPlay loop muted playsInline src="https://player.vimeo.com/external/368763065.sd.mp4?s=13b82dca9b30e5dd3a689e0b96d1c521a5b63d45&profile_id=139&oauth2_token_id=57447761" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+              <p className="text-white italic text-center w-full p-4">
+                Our CMNTYPLX space - where community and quality food come
+                together
+              </p>
+            </div>
           </div>
           <h3 className="text-2xl font-bold text-gray-900 mb-4">
             Our Inspiration
@@ -57,6 +61,35 @@ const About = () => {
             creating a "Community Plex" space where people could gather and
             enjoy our offerings in a welcoming environment.
           </p>
+          {/* Sensory description box */}
+          <div className="bg-gray-50 p-6 rounded-lg mb-8">
+            <h4 className="text-lg font-semibold text-gray-900 mb-3">
+              Our Sensory Experience
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="bg-white p-4 rounded-lg shadow-sm">
+                <h5 className="font-medium text-red-600 mb-2">Sight</h5>
+                <p className="text-gray-700 text-sm">
+                  Bold, vibrant colors that catch the eye. Clean, minimalist
+                  presentation that highlights the quality of our ingredients.
+                </p>
+              </div>
+              <div className="bg-white p-4 rounded-lg shadow-sm">
+                <h5 className="font-medium text-red-600 mb-2">Aroma</h5>
+                <p className="text-gray-700 text-sm">
+                  Rich, inviting scents that hint at the natural flavors within.
+                  From sweet pandan to aromatic tea blends.
+                </p>
+              </div>
+              <div className="bg-white p-4 rounded-lg shadow-sm">
+                <h5 className="font-medium text-red-600 mb-2">Taste</h5>
+                <p className="text-gray-700 text-sm">
+                  Balanced flavors that delight the palate. Sweet meets savory,
+                  traditional meets modern, in every bite and sip.
+                </p>
+              </div>
+            </div>
+          </div>
           <h3 className="text-2xl font-bold text-gray-900 mb-4">
             Our Aesthetic
           </h3>
@@ -68,8 +101,15 @@ const About = () => {
             our focus on desserts and sweet treats.
           </p>
           <div className="my-10">
-            <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="THEFMSMKT Products" className="w-full h-80 object-cover rounded-lg shadow-md mb-4" />
-            <p className="text-sm text-gray-500 italic text-center">
+            <div className="relative rounded-lg overflow-hidden shadow-md">
+              <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="THEFMSMKT Products" className="w-full h-80 object-cover" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full">
+                  View Gallery
+                </button>
+              </div>
+            </div>
+            <p className="text-sm text-gray-500 italic text-center mt-2">
               Our carefully crafted desserts and beverages
             </p>
           </div>
@@ -94,7 +134,13 @@ const About = () => {
               </Button>
             </Link>
           </div>
-          {/* Partnerships & Social Impact Section */}
+        </div>
+      </section>
+      {/* Brand Story Section - Reusing component */}
+      <BrandStorySection />
+      {/* Partnerships & Social Impact Section */}
+      <section className="py-16 px-4 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">
             Partnerships & Social Impact
           </h2>
@@ -103,6 +149,30 @@ const About = () => {
             we're building strategic partnerships to maximize our social impact
             and create sustainable opportunities within our community.
           </p>
+          {/* Transparency metrics */}
+          <div className="bg-white p-6 rounded-lg shadow-sm mb-10">
+            <h3 className="text-xl font-bold text-gray-900 mb-4">
+              Our Impact in Numbers
+            </h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              <div>
+                <div className="text-3xl font-bold text-red-600 mb-1">85%</div>
+                <p className="text-gray-700 text-sm">Local Ingredients</p>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-red-600 mb-1">12+</div>
+                <p className="text-gray-700 text-sm">Community Events</p>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-red-600 mb-1">24</div>
+                <p className="text-gray-700 text-sm">Local Jobs Created</p>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-red-600 mb-1">70%</div>
+                <p className="text-gray-700 text-sm">Plastic Reduction</p>
+              </div>
+            </div>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
             <div className="bg-gray-50 p-6 rounded-lg">
               <div className="flex items-center mb-4">
